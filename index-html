@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PartTimeMC | Find Work. Hire People.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --blue: #1769ff;
+    --dark: #14213d;
+    --light: #f5f8ff;
+    --purple: #7955e8;
+    --muted: #697586;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--dark);
+    background: var(--white);
+    line-height: 1.6;
+}
+
+button, input, select {
+    font: inherit;
+}
+
+button, a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: min(1150px, 92%);
+    margin: auto;
+}
+
+/* NAVIGATION */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #e9edf5;
+}
+
+.navbar {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--blue);
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--dark);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-size: 14px;
+    font-weight: 600;
+    transition: .2s;
+}
+
+.nav-links a:hover {
+    color: var(--blue);
+}
+
+.nav-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 9px;
+    padding: 12px 21px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.btn-primary {
+    background: var(--blue);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0752db;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: white;
+    border: 1px solid #dce3ef;
+    color: var(--dark);
+}
+
+.btn-outline:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(120deg, #eff5ff, #f7f5ff);
+    padding: 90px 0 85px;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: #dce8ff;
+    border-radius: 50%;
+    right: -100px;
+    top: -150px;
+    opacity: .6;
+}
+
+.hero-content {
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.eyebrow {
+    display: inline-block;
+    background: #e1ebff;
+    color: var(--blue);
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 6vw, 62px);
+    line-height: 1.12;
+    letter-spacing: -2.5px;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: var(--blue);
+}
+
+.hero p {
+    color: var(--muted);
+    max-width: 630px;
+    margin: 0 auto 30px;
+    font-size: 16px;
+}
+
+.search-box {
+    background: white;
+    border-radius: 14px;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    box-shadow: 0 15px 45px rgba(35,70,130,.10);
+    max-width: 800px;
+    margin: auto;
+}
+
+.search-field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+}
+
+.search-field span {
+    font-size: 20px;
+}
+
+.search-field input {
+    width: 100%;
+    border: none;
+    outline: none;
+    color: var(--dark);
+    min-width: 0;
+    font-size: 14px;
+}
+
+.search-box .btn {
+    min-width: 125px;
+}
+
+.hero-note {
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* STATS */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 35px 0;
+    border-bottom: 1px solid #edf0f5;
+    text-align: center;
+}
+
+.stat h2 {
+    font-size: 27px;
+    color: var(--blue);
+}
+
+.stat p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* SECTIONS */
+
+section.content-section {
+    padding: 75px 0;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    font-size: 32px;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* CATEGORIES */
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 17px;
+}
+
+.category-card {
+    border: 1px solid #e9edf5;
+    padding: 23px 18px;
+    border-radius: 13px;
+    background: white;
+    cursor: pointer;
+    text-align: left;
+    transition: .25s;
+}
+
+.category-card:hover,
+.category-card.active {
+    border-color: var(--blue);
+    background: #f4f8ff;
+    transform: translateY(-4px);
+}
+
+.category-icon {
+    font-size: 29px;
+    margin-bottom: 12px;
+}
+
+.category-card h3 {
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+
+.category-card p {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* JOB LISTINGS */
+
+.jobs-section {
+    background: #f8faff;
+}
+
+.jobs-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.jobs-toolbar h3 {
+    font-size: 19px;
+}
+
+.jobs-toolbar select {
+    border: 1px solid #dce3ef;
+    padding: 10px 13px;
+    border-radius: 8px;
+    background: white;
+    outline: none;
+}
+
+.job-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.job-card {
+    background: white;
+    border: 1px solid #e8edf5;
+    border-radius: 13px;
+    padding: 23px;
+    transition: .25s;
+}
+
+.job-card:hover {
+    box-shadow: 0 12px 30px rgba(30,60,110,.08);
+    transform: translateY(-3px);
+}
+
+.job-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.job-icon {
+    width: 48px;
+    height: 48px;
+    background: #edf3ff;
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+}
+
+.job-type {
+    background: #eaf7ef;
+    color: #20854a;
+    border-radius: 20px;
+    padding: 5px 11px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.job-card h3 {
+    margin-top: 16px;
+    font-size: 17px;
+}
+
+.company {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 3px;
+}
+
+.job-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 17px 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.job-bottom {
+    border-top: 1px solid #edf0f5;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.salary {
+    color: var(--blue);
+    font-weight: 800;
+    font-size: 13px;
+}
+
+.job-bottom button {
+    padding: 9px 15px;
+    font-size: 12px;
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    padding: 40px;
+    text-align: center;
+    color: var(--muted);
+    background: white;
+    border-radius: 12px;
+}
+
+/* CTA */
+
+.cta-section {
+    padding: 75px 0;
+}
+
+.cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.cta-card {
+    padding: 35px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #1769ff, #4488ff);
+    color: white;
+}
+
+.cta-card.employer {
+    background: linear-gradient(135deg, #6544c9, #9274ee);
+}
+
+.cta-card .big-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.cta-card h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.cta-card p {
+    font-size: 13px;
+    opacity: .9;
+    margin-bottom: 22px;
+    max-width: 400px;
+}
+
+.cta-card .btn {
+    background: white;
+    color: var(--blue);
+}
+
+/* HOW IT WORKS */
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    text-align: center;
+}
+
+.step {
+    padding: 20px;
+}
+
+.step-number {
+    width: 55px;
+    height: 55px;
+    background: #eaf1ff;
+    color: var(--blue);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 15px;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.step h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.step p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #121e35;
+    color: white;
+    padding: 50px 0 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 30px;
+    padding-bottom: 35px;
+}
+
+.footer-logo {
+    color: #70a2ff;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+footer p {
+    color: #b8c3d7;
+    font-size: 13px;
+    margin-top: 12px;
+    max-width: 340px;
+}
+
+footer h4 {
+    margin-bottom: 13px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.footer-links a {
+    color: #b8c3d7;
+    font-size: 13px;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.copyright {
+    border-top: 1px solid #29364c;
+    text-align: center;
+    padding-top: 20px;
+    color: #aab6c9;
+    font-size: 12px;
+}
+
+/* MODAL */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(10,20,40,.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    width: min(470px, 100%);
+    border-radius: 15px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-content h2 {
+    margin-bottom: 15px;
+}
+
+.modal-content input,
+.modal-content select {
+    width: 100%;
+    border: 1px solid #dce3ef;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 7px 0 13px;
+}
+
+.modal-content label {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.close-modal {
+    float: right;
+    border: none;
+    background: none;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.modal-content .btn {
+    width: 100%;
+}
+
+.notice {
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 850px) {
+    .nav-links {
+        gap: 15px;
+    }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 650px) {
+    .navbar {
+        min-height: 68px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 22px;
+        flex-direction: column;
+        align-items: stretch;
+        border-bottom: 1px solid #eee;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-actions .btn-outline {
+        display: none;
+    }
+
+    .nav-actions .btn {
+        padding: 9px 12px;
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 65px 0;
+    }
+
+    .hero h1 {
+        letter-spacing: -1.5px;
+    }
+
+    .search-box {
+        flex-direction: column;
+        padding: 14px;
+    }
+
+    .search-field {
+        border-bottom: 1px solid #edf0f5;
+        padding: 12px 5px;
+    }
+
+    .search-box .btn {
+        width: 100%;
+    }
+
+    .stats {
+        gap: 8px;
+    }
+
+    .stat h2 {
+        font-size: 21px;
+    }
+
+    .stat p {
+        font-size: 11px;
+    }
+
+    section.content-section {
+        padding: 55px 0;
+    }
+
+    .section-heading h2 {
+        font-size: 26px;
+    }
+
+    .job-grid,
+    .cta-grid,
+    .steps,
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .jobs-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .cta-card {
+        padding: 27px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<header>
+    <div class="container navbar">
+
+        <a href="#" class="logo">PartTime<span>MC.</span></a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#">Home</a>
+            <a href="#jobs">Find Jobs</a>
+            <a href="#categories">Categories</a>
+            <a href="#how">How It Works</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="btn btn-outline" onclick="openModal('loginModal')">
+                Log In
+            </button>
+
+            <button class="btn btn-primary" onclick="openModal('registerModal')">
+                Get Started
+            </button>
+
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        </div>
+
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container hero-content">
+
+        <span class="eyebrow">YOUR OPPORTUNITIES START HERE</span>
+
+        <h1>
+            Find the right job.<br>
+            <span>Build your future.</span>
+        </h1>
+
+        <p>
+            PartTimeMC connects job seekers with employers.
+            Discover opportunities, find talented people,
+            and take your next career step.
+        </p>
+
+        <form class="search-box" id="searchForm">
+
+            <div class="search-field">
+                <span>🔎</span>
+                <input type="text" id="keyword"
+                placeholder="Job title, skills or keyword">
+            </div>
+
+            <div class="search-field">
+                <span>📍</span>
+                <input type="text" id="location"
+                placeholder="Location">
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Search Jobs
+            </button>
+
+        </form>
+
+        <div class="hero-note">
+            Explore local, part-time, full-time and remote opportunities.
+        </div>
+
+    </div>
+</section>
+
+<!-- STATS -->
+<div class="container">
+    <div class="stats">
+
+        <div class="stat">
+            <h2>01</h2>
+            <p>One platform for opportunities</p>
+        </div>
+
+        <div class="stat">
+            <h2>02</h2>
+            <p>Two connected communities</p>
+        </div>
+
+        <div class="stat">
+            <h2>∞</h2>
+            <p>Possibilities for your future</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="content-section" id="categories">
+    <div class="container">
+
+        <div class="section-heading">
+            <h2>Explore Job Categories</h2>
+            <p>Discover opportunities that match your skills and interests.</p>
+        </div>
+
+        <div class="categories">
+
+            <button class="category-card" onclick="filterCategory('Teaching')">
+                <div class="category-icon">📚</div>
+                <h3>Teaching & Tutoring</h3>
+                <p>Education and learning</p>
+            </button>
+
+            <button class="category-card" onclick="filterCategory('Design')">
+                <div class="category-icon">🎨</div>
+                <h3>Design & Editing</h3>
+                <p>Creative opportunities</p>
+            </button>
+
+            <button class="category-card" onclick="filterCategory('Office')">
+                <div class="category-icon">💻</div>
+                <h3>Office & Admin</h3>
+                <p>Administrative work</p>
+            </button>
+
+            <button class="category-card" onclick="filterCategory('Sales')">
+                <div class="category-icon">📈</div>
+                <h3>Sales & Marketing</h3>
+                <p>Business opportunities</p>
+            </button>
+
+            <button class="category-card" onclick="filterCategory('Remote')">
+                <div class="category-icon">🌐</div>
+                <h3>Remote Work</h3>
+                <p>Work from anywhere</p>
+            </button>
+
+            <button class="category-card" onclick="filterCategory('Full-time')">
+                <div class="category-icon">🏢</div>
+                <h3>Full-Time Jobs</h3>
+                <p>Long-term employment</p>
+            </button>
+
+            <button class="category-card" onclick="filterCategory('Part-time')">
+                <div class="category-icon">⏰</div>
+                <h3>Part-Time Jobs</h3>
+                <p>Flexible working hours</p>
+            </button>
+
+            <button class="category-card" onclick="filterCategory('Skilled')">
+                <div class="category-icon">🛠️</div>
+                <h3>Skilled Work</h3>
+                <p>Technical and manual skills</p>
+            </button>
+
+        </div>
+    </div>
+</section>
+
+<!-- JOB LISTINGS -->
+<section class="content-section jobs-section" id="jobs">
+    <div class="container">
+
+        <div class="section-heading">
+            <h2>Featured Opportunities</h2>
+            <p>Explore sample job listings and discover what's possible.</p>
+        </div>
+
+        <div class="jobs-toolbar">
+            <h3 id="jobCount">Available Opportunities</h3>
+
+            <select id="sortJobs" onchange="renderJobs()">
+                <option value="default">Sort: Default</option>
+                <option value="salary">Salary: Highest first</option>
+                <option value="title">Job title: A-Z</option>
+            </select>
+        </div>
+
+        <div class="job-grid" id="jobGrid"></div>
+
+    </div>
+</section>
+
+<!-- JOB SEEKER / EMPLOYER -->
+<section class="cta-section">
+    <div class="container">
+
+        <div class="cta-grid">
+
+            <div class="cta-card">
+                <div class="big-icon">👩‍💼</div>
+                <h2>Looking for a Job?</h2>
+                <p>
+                    Find opportunities, showcase your skills,
+                    and connect with employers who need your talent.
+                </p>
+                <button class="btn" onclick="openModal('registerModal')">
+                    Join as Job Seeker →
+                </button>
+            </div>
+
+            <div class="cta-card employer">
+                <div class="big-icon">🏢</div>
+                <h2>Looking for Workers?</h2>
+                <p>
+                    Find potential employees, advertise vacancies,
+                    and connect with people who can help your business grow.
+                </p>
+                <button class="btn" onclick="openModal('postModal')">
+                    Post a Job →
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="content-section" id="how">
+    <div class="container">
+
+        <div class="section-heading">
+            <h2>How PartTimeMC Works</h2>
+            <p>Three simple steps to get started.</p>
+        </div>
+
+        <div class="steps">
+
+            <div class="step">
+                <div class="step-number">01</div>
+                <h3>Create Your Account</h3>
+                <p>Register as a job seeker or employer.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">02</div>
+                <h3>Explore Opportunities</h3>
+                <p>Search for jobs or publish your vacancies.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">03</div>
+                <h3>Connect & Apply</h3>
+                <p>Connect with the right people and opportunities.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+                <div class="footer-logo">PartTimeMC.</div>
+                <p>
+                    Connecting job seekers and employers
+                    through accessible employment opportunities.
+                    Find work. Hire people. Build futures.
+                </p>
+            </div>
+
+            <div>
+                <h4>Explore</h4>
+                <div class="footer-links">
+                    <a href="#jobs">Find Jobs</a>
+                    <a href="#categories">Job Categories</a>
+                    <a href="#how">How It Works</a>
+                </div>
+            </div>
+
+            <div>
+                <h4>Get Started</h4>
+                <div class="footer-links">
+                    <a href="#" onclick="openModal('registerModal');return false;">Register</a>
+                    <a href="#" onclick="openModal('loginModal');return false;">Log In</a>
+                    <a href="#" onclick="openModal('postModal');return false;">Post a Job</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © <span id="year"></span> PartTimeMC. All rights reserved.
+            <br>Find Work. Hire People.
+        </div>
+
+    </div>
+</footer>
+
+<!-- REGISTER MODAL -->
+<div class="modal" id="registerModal">
+    <div class="modal-content">
+
+        <button class="close-modal" onclick="closeModal('registerModal')">×</button>
+
+        <h2>Create an Account</h2>
+        <p class="notice">Choose how you want to use PartTimeMC.</p>
+
+        <form onsubmit="demoRegister(event)">
+
+            <label>Full Name</label>
+            <input type="text" required placeholder="Enter your full name">
+
+            <label>Email Address</label>
+            <input type="email" required placeholder="Enter your email">
+
+            <label>I want to register as:</label>
+            <select required>
+                <option value="">Choose account type</option>
+                <option>Job Seeker</option>
+                <option>Employer</option>
+            </select>
+
+            <button class="btn btn-primary" type="submit">
+                Continue
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+
+        <button class="close-modal" onclick="closeModal('loginModal')">×</button>
+
+        <h2>Welcome Back!</h2>
+        <p class="notice">Sign in to access your account.</p>
+
+        <form onsubmit="demoLogin(event)">
+
+            <label>Email Address</label>
+            <input type="email" required placeholder="Your email">
+
+            <label>Password</label>
+            <input type="password" required placeholder="Your password">
+
+            <button class="btn btn-primary" type="submit">
+                Log In
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+<!-- POST JOB MODAL -->
+<div class="modal" id="postModal">
+    <div class="modal-content">
+
+        <button class="close-modal" onclick="closeModal('postModal')">×</button>
+
+        <h2>Post a Job</h2>
+        <p class="notice">Create a sample listing to preview how posting works.</p>
+
+        <form onsubmit="addJob(event)">
+
+            <label>Job Title</label>
+            <input id="newTitle" required placeholder="e.g. Graphic Designer">
+
+            <label>Company or Employer</label>
+            <input id="newCompany" required placeholder="Business or employer name">
+
+            <label>Location</label>
+            <input id="newLocation" required placeholder="e.g. Marawi City">
+
+            <label>Job Type</label>
+            <select id="newType">
+                <option>Part-time</option>
+                <option>Full-time</option>
+                <option>Remote</option>
+            </select>
+
+            <label>Salary / Compensation</label>
+            <input id="newSalary" required placeholder="e.g. ₱500 per day">
+
+            <button class="btn btn-primary" type="submit">
+                Add Sample Listing
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+<script>
+
+// SAMPLE JOB DATA
+// These are demonstration listings, not verified vacancies.
+
+const jobs = [
+    {
+        title: "English Language Tutor",
+        company: "Sample Education Center",
+        location: "Marawi City",
+        type: "Part-time",
+        category: "Teaching",
+        salary: "₱500 / day",
+        icon: "📚"
+    },
+    {
+        title: "Graphic Designer",
+        company: "Sample Creative Studio",
+        location: "Remote",
+        type: "Remote",
+        category: "Design",
+        salary: "₱8,000 / month",
+        icon: "🎨"
+    },
+    {
+        title: "Administrative Assistant",
+        company: "Sample Business Office",
+        location: "Marawi City",
+        type: "Full-time",
+        category: "Office",
+        salary: "₱15,000 / month",
+        icon: "💻"
+    },
+    {
+        title: "Social Media Assistant",
+        company: "Sample Marketing Team",
+        location: "Remote",
+        type: "Part-time",
+        category: "Remote",
+        salary: "₱6,000 / month",
+        icon: "📱"
+    },
+    {
+        title: "Sales Representative",
+        company: "Sample Retail Store",
+        location: "Marawi City",
+        type: "Full-time",
+        category: "Sales",
+        salary: "₱14,000 / month",
+        icon: "📈"
+    },
+    {
+        title: "Skilled Maintenance Worker",
+        company: "Sample Services",
+        location: "Marawi City",
+        type: "Full-time",
+        category: "Skilled",
+        salary: "₱600 / day",
+        icon: "🛠️"
+    }
+];
+
+let activeCategory = "All";
+let searchKeyword = "";
+let searchLocation = "";
+
+// DISPLAY JOBS
+function renderJobs() {
+
+    const grid = document.getElementById("jobGrid");
+    const count = document.getElementById("jobCount");
+
+    let filtered = jobs.filter(job => {
+
+        const keywordMatch =
+            (job.title + " " + job.company + " " + job.category)
+            .toLowerCase().includes(searchKeyword);
+
+        const locationMatch =
+            job.location.toLowerCase().includes(searchLocation);
+
+        const categoryMatch =
+            activeCategory === "All" ||
+            job.category === activeCategory ||
+            job.type === activeCategory;
+
+        return keywordMatch && locationMatch && categoryMatch;
+    });
+
+    const sort = document.getElementById("sortJobs").value;
+
+    if (sort === "title") {
+        filtered.sort((a,b) => a.title.localeCompare(b.title));
+    }
+
+    if (sort === "salary") {
+        filtered.reverse();
+    }
+
+    count.textContent = filtered.length + " Sample Opportunities";
+
+    if (filtered.length === 0) {
+        grid.innerHTML = `
+            <div class="no-results">
+                <h3>No matching jobs found.</h3>
+                <p>Try another keyword, location, or category.</p>
+            </div>`;
+        return;
+    }
+
+    grid.innerHTML = filtered.map(job => `
+
+        <article class="job-card">
+
+            <div class="job-top">
+                <div class="job-icon">${job.icon}</div>
+                <span class="job-type">${job.type}</span>
+            </div>
+
+            <h3>${escapeHTML(job.title)}</h3>
+            <p class="company">${escapeHTML(job.company)}</p>
+
+            <div class="job-details">
+                <span>📍 ${escapeHTML(job.location)}</span>
+                <span>💼 ${escapeHTML(job.category)}</span>
+            </div>
+
+            <div class="job-bottom">
+                <span class="salary">${escapeHTML(job.salary)}</span>
+                <button class="btn btn-outline"
+                    onclick="viewJob('${escapeJS(job.title)}')">
+                    View Details
+                </button>
+            </div>
+
+        </article>
+
+    `).join("");
+
+}
+
+// SEARCH
+document.getElementById("searchForm").addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    searchKeyword = document.getElementById("keyword")
+        .value.trim().toLowerCase();
+
+    searchLocation = document.getElementById("location")
+        .value.trim().toLowerCase();
+
+    activeCategory = "All";
+
+    document.querySelectorAll(".category-card")
+        .forEach(card => card.classList.remove("active"));
+
+    renderJobs();
+
+    document.getElementById("jobs").scrollIntoView();
+});
+
+// CATEGORY FILTER
+function filterCategory(category) {
+
+    activeCategory = category;
+    searchKeyword = "";
+    searchLocation = "";
+
+    document.getElementById("keyword").value = "";
+    document.getElementById("location").value = "";
+
+    document.querySelectorAll(".category-card")
+        .forEach(card => card.classList.remove("active"));
+
+    event.currentTarget.classList.add("active");
+
+    renderJobs();
+
+    document.getElementById("jobs").scrollIntoView();
+}
+
+// VIEW JOB
+function viewJob(title) {
+
+    const job = jobs.find(item => item.title === title);
+
+    if (!job) return;
+
+    alert(
+        "JOB DETAILS\n\n" +
+        job.title + "\n" +
+        "Employer: " + job.company + "\n" +
+        "Location: " + job.location + "\n" +
+        "Type: " + job.type + "\n" +
+        "Compensation: " + job.salary +
+        "\n\nThis is a sample listing. Online applications will be added when the account and application system is connected."
+    );
+}
+
+// ADD SAMPLE JOB
+function addJob(e) {
+
+    e.preventDefault();
+
+    jobs.unshift({
+        title: document.getElementById("newTitle").value,
+        company: document.getElementById("newCompany").value,
+        location: document.getElementById("newLocation").value,
+        type: document.getElementById("newType").value,
+        category: "All",
+        salary: document.getElementById("newSalary").value,
+        icon: "💼"
+    });
+
+    activeCategory = "All";
+    searchKeyword = "";
+    searchLocation = "";
+
+    document.getElementById("keyword").value = "";
+    document.getElementById("location").value = "";
+
+    renderJobs();
+    closeModal("postModal");
+
+    document.getElementById("jobs").scrollIntoView();
+
+    alert("Sample job listing added! It is currently visible only in this browser session.");
+}
+
+// MODALS
+function openModal(id) {
+    document.getElementById(id).classList.add("show");
+}
+
+function closeModal(id) {
+    document.getElementById(id).classList.remove("show");
+}
+
+function demoRegister(e) {
+    e.preventDefault();
+    alert("Registration preview only. Real account creation will be connected to Firebase.");
+}
+
+function demoLogin(e) {
+    e.preventDefault();
+    alert("Login preview only. Secure authentication will be implemented in the next stage.");
+}
+
+// MOBILE MENU
+function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("open");
+}
+
+// HELPERS
+function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[char]);
+}
+
+function escapeJS(value) {
+    return String(value).replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/[\r\n]/g, " ");
+}
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        document.getElementById("navLinks").classList.remove("open");
+    });
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+renderJobs();
+
+</script>
+
+</body>
+</html>
