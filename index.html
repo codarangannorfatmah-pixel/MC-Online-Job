@@ -1038,5 +1038,29 @@ drawCategories();
 renderJobs();
 </script>
 
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+  import { getAuth } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
+
+  // PartTimeMC Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAmy7nZs0wH41HCjuUjV3lOUdmgIv4pZtI",
+    authDomain: "parttimemc.firebaseapp.com",
+    projectId: "parttimemc",
+    storageBucket: "parttimemc.firebasestorage.app",
+    messagingSenderId: "615375870784",
+    appId: "1:615375870784:web:b2bb17505c8d888bf078a5",
+    measurementId: "G-N29X14NN3G"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  console.info("PartTimeMC Firebase connected successfully!");
+</script>
+
 </body>
 </html>
